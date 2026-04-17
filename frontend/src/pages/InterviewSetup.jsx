@@ -20,7 +20,7 @@ export default function InterviewSetup() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5001/api/interviews/setup', formData, {
+      const { data } = await axios.post('https://aivue-backend.onrender.com/api/interviews/setup', formData, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       navigate(`/interview/${data._id}`);

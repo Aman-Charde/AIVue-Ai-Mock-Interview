@@ -104,7 +104,7 @@ export default function InterviewRoom() {
   useEffect(() => {
     const fetchInterview = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5001/api/interviews/${id}`, {
+        const { data } = await axios.get(`https://aivue-backend.onrender.com/api/interviews/${id}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setInterview(data);
@@ -117,7 +117,7 @@ export default function InterviewRoom() {
           // All answered, mark as completed if not already
           isCompletedRef.current = true;
           if (data.status !== 'completed') {
-            await axios.put(`http://localhost:5001/api/interviews/${id}/complete`, {}, {
+            await axios.put(`https://aivue-backend.onrender.com/api/interviews/${id}/complete`, {}, {
               headers: { Authorization: `Bearer ${user.token}` }
             }).catch(() => { });
           }
@@ -240,7 +240,7 @@ export default function InterviewRoom() {
     setIsSubmitting(true);
     try {
       const questionId = interview.questions[currentQIndex]._id;
-      await axios.post('http://localhost:5001/api/interviews/answer', {
+      await axios.post('https://aivue-backend.onrender.com/api/interviews/answer', {
         interviewId: id,
         questionId,
         userAnswer
@@ -254,7 +254,7 @@ export default function InterviewRoom() {
       } else {
         // Finished
         isCompletedRef.current = true;
-        await axios.put(`http://localhost:5001/api/interviews/${id}/complete`, {}, {
+        await axios.put(`https://aivue-backend.onrender.com/api/interviews/${id}/complete`, {}, {
           headers: { Authorization: `Bearer ${user.token}` }
         }).catch(() => { });
 

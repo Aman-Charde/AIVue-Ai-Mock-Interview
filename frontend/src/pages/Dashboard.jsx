@@ -14,7 +14,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchInterviews = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5001/api/interviews', {
+        const { data } = await axios.get('https://aivue-backend.onrender.com/api/interviews', {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setInterviews(data);
